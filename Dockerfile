@@ -1,4 +1,4 @@
-FROM r-base:3.1.3
+FROM r-base:3.5.0
 
 RUN apt-get update && apt-get install -y  \
     sudo \
@@ -24,14 +24,16 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
 
 # RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
 # RUN gdebi shiny-server-1.5.9.923-amd64.deb && rm -f shiny-server-1.5.9.923-amd64.deb
-# source("http://bioconductor.org/biocLite.R")
-RUN R -e "install.packages(c('Rcpp', 'abind', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages(c('Biobase', 'BiocGenerics', 'S4Vectors', 'IRanges', 'GenomeInfoDb', 'GenomicRanges','impute'), repo='http://www.bioconductor.org')"
-RUN R -e "install.packages(c('PoissonSeq','FactoMineR','samr','ggplot2','VennDiagram','RobustRankAggreg','shiny','rmarkdown','Cairo','gplots','pheatmap','labeling'), repo='http://www.bioconductor.org')"
-RUN R -e "install.packages(c('edgeR', 'DESeq2', 'NOISeq'), repo='http://www.bioconductor.org')"
 
-# RUN R -e "devtools::install_github('rstudio/shiny-incubator', 'rstudio/rstudio')"
-# RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
+# source("http://bioconductor.org/biocLite.R")
+# RUN R -e "install.packages(c('Rcpp', 'abind', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
+# RUN R -e "install.packages(c('Biobase', 'BiocGenerics', 'S4Vectors', 'IRanges', 'GenomeInfoDb', 'GenomicRanges','impute'), repo='http://www.bioconductor.org')"
+# RUN R -e "install.packages(c('PoissonSeq','FactoMineR','samr','ggplot2','VennDiagram','RobustRankAggreg','shiny','rmarkdown','Cairo','gplots','pheatmap','labeling'), repo='http://www.bioconductor.org')"
+# RUN R -e "install.packages(c('edgeR', 'DESeq2', 'NOISeq'), repo='http://www.bioconductor.org')"
+
+RUN R -e "devtools::install_github('rstudio/shiny-incubator')"
+RUN R -e "devtools::install_github('rstudio/rstudio')"
+RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
