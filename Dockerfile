@@ -33,7 +33,7 @@ RUN R -e "install.packages(c('devtools'), repos='http://cran.rstudio.com/')"
 # RUN R -e "install.packages(c('edgeR', 'DESeq2', 'NOISeq'), repo='http://www.bioconductor.org')"
 
 RUN R -e "devtools::install_github('rstudio/shiny-incubator')"
-RUN R -e "devtools::install_github('rstudio/rstudio')"
+RUN R -e "devtools::install_github('rstudio')"
 RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
