@@ -22,14 +22,17 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb
 
-RUN wget https://download2.rstudio.org/rstudio-server-stretch-1.1.463-amd64.deb
-RUN sudo gdebi rstudio-server-stretch-1.1.463-amd64.deb
+# try to install rstudio by other ways: failed
+# RUN wget https://download2.rstudio.org/rstudio-server-stretch-1.1.463-amd64.deb
+# RUN sudo gdebi rstudio-server-stretch-1.1.463-amd64.deb
 
+# manually install shiny-server: failed
 # RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
 # RUN gdebi shiny-server-1.5.9.923-amd64.deb && rm -f shiny-server-1.5.9.923-amd64.deb
 
+# IDEA part: rstudio miss
 # source("http://bioconductor.org/biocLite.R")
-#RUN R -e "install.packages(c('Rcpp', 'abind', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
+# RUN R -e "install.packages(c('Rcpp', 'abind', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages(c('devtools'), repos='http://cran.rstudio.com/')"
 # RUN R -e "install.packages(c('Biobase', 'BiocGenerics', 'S4Vectors', 'IRanges', 'GenomeInfoDb', 'GenomicRanges','impute'), repo='http://www.bioconductor.org')"
 # RUN R -e "install.packages(c('PoissonSeq','FactoMineR','samr','ggplot2','VennDiagram','RobustRankAggreg','shiny','rmarkdown','Cairo','gplots','pheatmap','labeling'), repo='http://www.bioconductor.org')"
