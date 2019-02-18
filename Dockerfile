@@ -27,7 +27,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
 
 # source("http://bioconductor.org/biocLite.R")
 #RUN R -e "install.packages(c('Rcpp', 'abind', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages(c('devtools's), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('devtools'), repos='http://cran.rstudio.com/')"
 # RUN R -e "install.packages(c('Biobase', 'BiocGenerics', 'S4Vectors', 'IRanges', 'GenomeInfoDb', 'GenomicRanges','impute'), repo='http://www.bioconductor.org')"
 # RUN R -e "install.packages(c('PoissonSeq','FactoMineR','samr','ggplot2','VennDiagram','RobustRankAggreg','shiny','rmarkdown','Cairo','gplots','pheatmap','labeling'), repo='http://www.bioconductor.org')"
 # RUN R -e "install.packages(c('edgeR', 'DESeq2', 'NOISeq'), repo='http://www.bioconductor.org')"
