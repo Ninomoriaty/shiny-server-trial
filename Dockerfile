@@ -12,9 +12,8 @@ RUN apt-get update && apt-get install -y  \
     libxml2-dev \
     apt-utils \
     # add for devtools
-    build-essential \
+    build-essential
     # systemd \
-    && rm -rf /var/lib/apt/lists/*
 
 # Download and install shiny server
 RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/VERSION -O "version.txt" && \
