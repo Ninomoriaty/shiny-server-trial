@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y  \
     libxml2 \
     libxml2-dev \
     apt-utils \
+    # add for devtools
+    build-essential \
     # systemd \
     && rm -rf /var/lib/apt/lists/*
 
@@ -29,7 +31,10 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb
 
-RUN R -e "install.packages(c('Rcpp', 'shiny', 'rmarkdown', 'tm', 'wordcloud', 'memoise'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('Rcpp', 'shiny', 'rmarkdown', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
+RUN R -e " devtools::install_github('likelet/IDEA')"
+RUN R -e 
+
 
 EXPOSE 80
 
