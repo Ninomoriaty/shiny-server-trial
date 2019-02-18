@@ -22,6 +22,9 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb
 
+RUN wget https://download2.rstudio.org/rstudio-server-stretch-1.1.463-amd64.deb
+RUN sudo gdebi rstudio-server-stretch-1.1.463-amd64.deb
+
 # RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
 # RUN gdebi shiny-server-1.5.9.923-amd64.deb && rm -f shiny-server-1.5.9.923-amd64.deb
 
@@ -38,7 +41,6 @@ RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
-
 COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
 COPY inst/IDEA /srv/shiny-server/
 
@@ -46,4 +48,4 @@ EXPOSE 80
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 
-CMD ["/usr/bin/shiny-server.sh", "/bin/bash"]
+CMD ["/usr/bin/shiny-server.sh"]
