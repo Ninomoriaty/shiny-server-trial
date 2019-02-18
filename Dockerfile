@@ -30,8 +30,8 @@ RUN R -e "install.packages(c('Biobase', 'BiocGenerics', 'S4Vectors', 'IRanges', 
 RUN R -e "install.packages(c('PoissonSeq','FactoMineR','samr','ggplot2','VennDiagram','RobustRankAggreg','shiny','rmarkdown','Cairo','gplots','pheatmap','labeling'), repos='http://bioconductor.org/biocLite.R')"
 RUN R -e "install.packages(c('edgeR', 'DESeq2', 'NOISeq'), repos='http://bioconductor.org/biocLite.R')"
 
-RUN R -e "devtools::install_github('rstudio/shiny-incubator', 'rstudio/rstudio')"
-RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
+# RUN R -e "devtools::install_github('rstudio/shiny-incubator', 'rstudio/rstudio')"
+# RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
