@@ -32,8 +32,11 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     rm -f version.txt ss-latest.deb
 
 RUN R -e "install.packages(c('Rcpp', 'shiny', 'rmarkdown', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
-RUN R -e " devtools::install_github('likelet/IDEA')"
-RUN R -e 
+RUN R -e "devtools::install_github('shiny-incubator', 'rstudio')"
+RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
+RUN R -e "devtools::install_github('likelet/shinyBS')"
+RUN R -e "devtools::install_github('likelet/IDEA')"
+
 
 
 EXPOSE 80
