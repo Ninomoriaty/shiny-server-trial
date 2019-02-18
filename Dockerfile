@@ -1,9 +1,5 @@
 FROM r-base:latest
 
-COPY shiny-server.sh /usr/bin/shiny-server.sh
-COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
-COPY inst/IDEA /srv/shiny-server/
-
 RUN apt-get update && apt-get install -y  \
     sudo \
     gdebi-core \
@@ -40,6 +36,12 @@ RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
+
+COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
+COPY inst/IDEA /srv/shiny-server/
+
 EXPOSE 80
+
+COPY shiny-server.sh /usr/bin/shiny-server.sh
 
 CMD ["/usr/bin/shiny-server.sh", "/bin/bash"]
