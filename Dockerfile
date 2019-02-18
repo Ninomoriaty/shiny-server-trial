@@ -20,10 +20,6 @@ RUN apt-get update && apt-get install -y  \
     # systemd \
     && rm -rf /var/lib/apt/lists/*
 
-# RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
-# RUN gdebi shiny-server-1.5.9.923-amd64.deb && rm -f shiny-server-1.5.9.923-amd64.deb
-
-
 # Download and install shiny server
 RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/VERSION -O "version.txt" && \
     VERSION=$(cat version.txt)  && \
@@ -31,13 +27,18 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb
 
-RUN R -e "install.packages(c('Rcpp', 'shiny', 'rmarkdown', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
+# RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
+# RUN gdebi shiny-server-1.5.9.923-amd64.deb && rm -f shiny-server-1.5.9.923-amd64.deb
+
+RUN R -e "install.packages(c('Rcpp', 'abind', 'tm', 'devtools', 'memoise'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('Biobase', 'BiocGenerics', 'S4Vectors', 'IRanges', 'GenomeInfoDb', 'GenomicRanges','impute'), repos='http://bioconductor.org/biocLite.R')"
+RUN R -e "install.packages(c('PoissonSeq','FactoMineR','samr','ggplot2','VennDiagram','RobustRankAggreg','shiny','rmarkdown','Cairo','gplots','pheatmap','labeling'), repos='http://bioconductor.org/biocLite.R')"
+RUN R -e "install.packages(c('edgeR', 'DESeq2', 'NOISeq'), repos='http://bioconductor.org/biocLite.R')"
+
 RUN R -e "devtools::install_github('shiny-incubator', 'rstudio')"
 RUN R -e "devtools::install_github('AnalytixWare/ShinySky')"
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
-
-
 
 EXPOSE 80
 
