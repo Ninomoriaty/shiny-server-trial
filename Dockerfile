@@ -52,3 +52,5 @@ EXPOSE 80
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 
 CMD ["/usr/bin/shiny-server.sh"]
+
+# fatal problem:docker: Error response from daemon: OCI runtime create failed: container_linux.go:344: starting container process caused "exec: \"/usr/bin/shiny-server.sh\": permission denied": unknown.
