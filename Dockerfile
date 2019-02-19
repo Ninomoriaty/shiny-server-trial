@@ -23,7 +23,7 @@ RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.92
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
-# COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
+COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
 COPY inst/IDEA /srv/shiny-server/
 
 EXPOSE 8787
