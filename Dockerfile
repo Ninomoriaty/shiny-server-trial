@@ -23,11 +23,10 @@ RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.92
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
+# shiny server application & configuration: 8787
 COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
 COPY inst/IDEA /srv/shiny-server/
 
 EXPOSE 8787
 
 CMD ["/bin/bash"]
-
-# fatal problem:docker: Error response from daemon: OCI runtime create failed: container_linux.go:344: starting container process caused "exec: \"/usr/bin/shiny-server.sh\": permission denied": unknown.
