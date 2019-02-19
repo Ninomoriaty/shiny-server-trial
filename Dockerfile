@@ -23,7 +23,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     rm -f version.txt ss-latest.deb
 
 # IDEA part:
-RUN R -e "install.packages(c('devtools'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shiny', 'devtools'), repos='http://cran.rstudio.com/')"
 RUN R -e "devtools::install_github('likelet/shinyBS')"
 RUN R -e "devtools::install_github('likelet/IDEA')"
 
@@ -34,6 +34,6 @@ EXPOSE 8787
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 
-CMD ["/usr/bin/shiny-server.sh"]
+CMD ["/usr/bin/shiny-server.sh", "/bin/bash"]
 
 # fatal problem:docker: Error response from daemon: OCI runtime create failed: container_linux.go:344: starting container process caused "exec: \"/usr/bin/shiny-server.sh\": permission denied": unknown.
